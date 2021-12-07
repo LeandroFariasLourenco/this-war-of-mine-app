@@ -1,6 +1,6 @@
 export const Leonardo = {
-  portrait: require('../../assets/images/portraits/leonardo.png'),
-  thumb: require('../../assets/images/thumbs/leonardo-thumb.png'),
+  portrait: require('../../../assets/images/portraits/leonardo.png'),
+  thumb: require('../../../assets/images/thumbs/leonardo-thumb.png'),
   description: "Leonardo acabou indo para Pogoren em busca de oportunidades para sua carreira de artista. Uma pena que assim que ele se hospedou em um hotel, ele começou a escutar escombros caindo do andar de cima e ele foi forçado a sair, quando ele percebeu, estava cercado e perdido em um conflito que iria mudar sua vida para sempre...",
   color: { hex: '', color: '' },
   replacing: '',

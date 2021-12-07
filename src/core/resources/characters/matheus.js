@@ -1,6 +1,6 @@
 export const Matheus = {
-  portrait: require('../../assets/images/portraits/matheus.png'),
-  thumb: require('../../assets/images/thumbs/matheus-thumb.png'),
+  portrait: require('../../../assets/images/portraits/matheus.png'),
+  thumb: require('../../../assets/images/thumbs/matheus-thumb.png'),
   description: "Matheus entrou em Pogoren por acaso quando tentou fazer uma simples viagem para aproveitar seu breve período de férias no final do ano. Contudo, sua vinda coincidiu com um pesado conflito do qual ele não sabe o real motivo, mas sabe que independente do que... Ele precisa sobreviver e voltar para sua antiga vida...",
   color: { hex: '', color: '' },
   replacing: '',

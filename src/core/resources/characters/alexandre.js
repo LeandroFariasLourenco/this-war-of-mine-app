@@ -1,6 +1,6 @@
 export const Alexandre = {
-  portrait: require('../../assets/images/portraits/alexandre.png'),
-  thumb: require('../../assets/images/thumbs/alexandre-thumb.png'),
+  portrait: require('../../../assets/images/portraits/alexandre.png'),
+  thumb: require('../../../assets/images/thumbs/alexandre-thumb.png'),
   description: "Entrei em Pogoren procurando por oportunidades assim que terminei a faculdade, ouvi dizer que aqui era a tão sonhada terra da oportunidade, porém infelizmente o que encontrei não foram as oportunidades que esperava, não sei o motivo desse conflito ou porque isso aconteceu enquanto eu estava aqui, só me importo em sobreviver...",
   color: { hex: '', color: '' },
   replacing: '',

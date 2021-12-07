@@ -1,6 +1,6 @@
 export const Luan = {
-  portrait: require('../../assets/images/portraits/luan.png'),
-  thumb: require('../../assets/images/thumbs/luan-thumb.png'),
+  portrait: require('../../../assets/images/portraits/luan.png'),
+  thumb: require('../../../assets/images/thumbs/luan-thumb.png'),
   description: "Luan costumava trabalhar em viagem, e em uma delas ele acabou entrando em Pogoren, porém antes mesmo de ele se hospedar, percebeu que o ambiente não parecia nada amigavel, ele não conseguia encontrar uma única alma no meio da rua e antes mesmo de perceber, ele estava em um fogo cruzado entre os rebeldes e o exército de Pogoren, quando encontrou um esconderijo que compartilhava com outras pessoas.",
   color: { hex: '', color: '' },
   replacing: '',
