@@ -9,16 +9,24 @@ import { ActivityIndicator } from 'react-native';
 const Welcome = ({ navigation }) => {
   const [currentCharacter, setHasCurrentCharacter] = React.useState(null);
 
-  React.useEffect(() => {
-    (async () => {
-      const currentGame = await characterService.getCurrentGame();
-      if (currentGame) {
-        setHasCurrentCharacter(currentGame);
-        return;
-      }
+  checkCurrentGame = async () => {
+    const currentGame = await characterService.getCurrentGame();
+    if (currentGame) {
+      setHasCurrentCharacter(currentGame);
+      return;
+    }
 
-      setHasCurrentCharacter(null);
-    })();
+    setHasCurrentCharacter(null);
+  }
+
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      checkCurrentGame();
+    });
+
+    checkCurrentGame();
+
+    return unsubscribe;
   }, []);
 
   return (

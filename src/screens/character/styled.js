@@ -29,3 +29,12 @@ export const GenericBackground = styled(ImageBackground)`
   top: 0;
   right: 0;
 `;
+
+export const CharacterFooter = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+`;

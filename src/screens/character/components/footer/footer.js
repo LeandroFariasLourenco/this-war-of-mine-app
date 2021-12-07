@@ -22,8 +22,10 @@ import characterService from '../../../../core/services/characterService';
 import defaultCharacters from '../../../../core/resources/defaultCharacters';
 import characterStatsThoughts from '../../../../core/resources/toughts';
 
-import * as S from './styled';
 import getRandomInt from '../../../../core/utils/randomInt';
+import { THEME } from '../../../../styles/theme';
+
+import * as S from './styled';
 
 const Footer = ({
   character,
@@ -112,10 +114,11 @@ const Footer = ({
       ...character,
       stats: {
         ...character.stats,
-        [newStats[statIndex].label]: newStats[statIndex].value,
       }
     }
-    console.log(toStore);
+    newStats.forEach((stat) => {
+      toStore.stats[stat.label] = stat.value;
+    });
     await characterService.setCurrentGame(toStore);
   }
 
@@ -216,7 +219,7 @@ const Footer = ({
         {characterThoughts === 'Aperte em continuar se o personagem atingiu 4 de status' && (
           <Button
             buttonStyle={{
-              backgroundColor: '#f55151',
+              backgroundColor: THEME.colors.buttons.danger,
               paddingHorizontal: 20,
             }}
             onPress={() => {
@@ -282,7 +285,7 @@ const Footer = ({
               fontSize: 48,
               textAlign: 'center',
               letterSpacing: 5,
-              textShadowColor: activeColor.hex,
+              textShadowColor: activeColor.hex || 'transparent',
               textShadowOffset: { width: -1, height: -1 },
               textShadowRadius: 100
             }}
@@ -292,7 +295,9 @@ const Footer = ({
           <S.CharacterFooterWrapper style={{ marginTop: 0 }}>
             {stats.map((stat, index, arr) => (
               index % 2 === 0 && (
-                <S.FooterColumn>
+                <S.FooterColumn
+                  key={stat.label}
+                >
                   {renderLabel(stat)}
                   {arr[index + 1] && renderLabel(arr[index + 1])}
                   {index === stats.length - 1 && (
@@ -376,11 +381,13 @@ const Footer = ({
           resizeMode="cover"
         />
         {defaultCharacters.map(({ name }) => (
-          <ListItem onPress={() => {
-            character.replacing = name;
-            characterService.setCurrentGame(character);
-            setChoosingCharacterToReplace(false);
-          }}
+          <ListItem
+            key={name}
+            onPress={() => {
+              character.replacing = name;
+              characterService.setCurrentGame(character);
+              setChoosingCharacterToReplace(false);
+            }}
             containerStyle={{ backgroundColor: 'transparent', borderWidth: 1, borderColor: 'white', borderRadius: 10 }}
           >
             <ListItem.Content>

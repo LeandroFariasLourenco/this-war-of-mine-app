@@ -2,7 +2,10 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { Button, Dialog, Image, Text } from 'react-native-elements';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AppText } from '../../shared/components';
+import { THEME } from '../../styles/theme';
 import Footer from './components/footer/footer';
+import Memories from './components/memories/memories';
 
 import * as S from './styled';
 
@@ -11,10 +14,46 @@ const Character = ({
   route
 }) => {
   const character = route.params.character;
+  const [confirmEndgame, setConfirmEndgame] = React.useState(false);
   const [description, setDescription] = React.useState(character.description);
 
   return (
     <GestureHandlerRootView>
+      <Dialog
+        overlayStyle={{ backgroundColor: 'black' }}
+        isVisible={confirmEndgame}
+      >
+        <AppText text="Aviso" size={28} />
+        <AppText text="Você tem certeza que deseja finalizar o jogo?" size={18} color="white" />
+        <AppText text="Apenas selecione se conseguiu sobreviver ao jogo completo." size={18} color="white" />
+
+        <Dialog.Actions>
+          <Button
+            title="Não"
+            titleStyle={{ fontFamily: THEME.fontName, fontSize: 24 }}
+            onPress={() => setConfirmEndgame(false)}
+            buttonStyle={{
+              backgroundColor: THEME.colors.fonts.primary,
+              paddingHorizontal: 20
+            }}
+          />
+          <Button
+            title="Sim"
+            titleStyle={{ fontFamily: THEME.fontName, fontSize: 24 }}
+            containerStyle={{
+              marginRight: 20,
+            }}
+            onPress={() => {
+              navigation.navigate('end-game');
+            }}
+            buttonStyle={{
+              backgroundColor: THEME.colors.buttons.danger,
+              paddingHorizontal: 20
+            }}
+          />
+        </Dialog.Actions>
+      </Dialog>
+
       <Dialog
         isVisible={!!description}
         overlayStyle={{
@@ -68,7 +107,8 @@ const Character = ({
             color: 'white',
             fontFamily: 'theme',
             fontSize: 18,
-          }} title={`Eu sou ${character.name.toLowerCase()} e essa é minha história`} />
+          }}
+          title={`Eu sou ${character.name.toLowerCase()} e essa guerra é minha`} />
       </Dialog>
       <S.Background
         height="60%"
@@ -84,6 +124,26 @@ const Character = ({
             source={character.portrait}
             style={{ width: 330, height: 450 }}
           />
+
+          <S.CharacterFooter>
+            <Memories />
+            <Button
+              containerStyle={{
+                opacity: 0.5,
+              }}
+              titleStyle={{
+                fontFamily: THEME.fontName,
+                fontSize: 22,
+              }}
+              buttonStyle={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                backgroundColor: THEME.colors.buttons.danger
+              }}
+              onPress={() => setConfirmEndgame(true)}
+              title="Finalizar"
+            />
+          </S.CharacterFooter>
         </S.Character>
         <Footer
           character={character}
